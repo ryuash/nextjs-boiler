@@ -5,4 +5,7 @@ module.exports = nextTranslate({
   nextConfig: {
     reactStrictMode: true,
   },
+  experimental: {
+    outputStandalone: true,
+  },
 });
