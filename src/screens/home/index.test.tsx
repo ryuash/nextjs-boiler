@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
 import Component from '.';
 
 // ==================================
@@ -17,11 +17,14 @@ jest.mock('next-translate/useTranslation', () => () => mockI18n);
 // ==================================
 describe('Dummy Test', () => {
   it('matches snapshot', async () => {
-    const component = renderer.create(<Component />);
-
-    // await wait();
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<Component />);
+    expect(screen.getByText(
+      /Testing Next.js With Jest and React Testing Library/i,
+    )).toBeInTheDocument();
+    expect(screen.getByText(
+      /hwohoh/i,
+    )).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   afterEach(() => {

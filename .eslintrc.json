@@ -63,6 +63,7 @@
         }
     ],
     "rules": {
+        "max-len": "warn",
         "import/no-extraneous-dependencies": "off",
         "global-require": "warn",
         "import/no-dynamic-require": "warn",
